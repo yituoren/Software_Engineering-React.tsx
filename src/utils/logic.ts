@@ -93,7 +93,18 @@ export const flipCell = (board: Board, i: number, j: number): Board => {
      * @note 你可以使用命令 pnpm test flip 来运行我们编写的单元测试以检验自己的实现
      */
     // Step 3 BEGIN
-
+    const newBoard: Board = board.map((row, idx) => {
+        if (idx === i) {
+            return row.map((cell, jdx) => {
+                if (jdx === j) {
+                    return cell === 0 ? 1 : 0;
+                }
+                return cell;
+            });
+        }
+        return row;
+    });
+    return newBoard;
     // Step 3 END
 
     /**

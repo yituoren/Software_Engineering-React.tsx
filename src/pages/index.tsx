@@ -80,7 +80,19 @@ const BoardScreen = () => {
 
     const switchAutoPlay = () => {
         // Step 3 BEGIN
-
+        setAutoPlay((autoPlay) => {
+            if (autoPlay) {
+                clearInterval(timerRef.current);
+                return false;
+            }
+            else {
+                timerRef.current = setInterval(() => {
+                    setBoard((board) => stepBoard(board));
+                }, 300);
+                return true;
+            }
+        }
+        );
         // Step 3 END
     };
 
